@@ -1,0 +1,104 @@
+* {
+    box-sizing: border-box;
+    user-select: none;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(135deg, #2c3e50, #4ca1af);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 15px;
+    color: white;
+}
+
+.spans{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    gap:6px;
+    margin-top:12px;
+    font-family:sans-serif;
+}
+
+/* Instruction text */
+.spans span:first-child{
+    font-size:20px;
+    color:white;
+}
+
+/* Hex Code Style */
+#spanCode{
+    font-size:24px;
+    font-weight:bold;
+    padding:6px 14px;
+    border-radius:6px;
+    cursor:pointer;
+    user-select:none;
+    transition:all 0.2s ease;
+}
+
+/* Hover */
+#spanCode:hover{
+    background: black;
+    color:#fff;
+}
+/* click Effect */
+#spanCode:active{
+    transform:scale(0.95);
+}
+
+.hidden {
+    display: none;
+}
+
+#backDiv {
+    width: 100%;
+    max-width: 500px;
+    height: 200px;
+    background-color: rgb(0, 0, 0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 52px;
+    border-radius: 15px;
+    margin-bottom: 25px;
+    transition: all 0.3s ease;
+}
+
+.controls {
+    width: 100%;
+    max-width: 500px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 15px;
+}
+
+select {
+    width: 100%;
+    padding: 8px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    border: none;
+    font-size: 16px;
+}
+
+.range-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+
+input[type="range"] {
+    width: 100%;
+    cursor: pointer;
+}

@@ -170,5 +170,12 @@ Grays: [
 {name:"SlateGray", rgb:"rgba(112,128,144,100)"},
 {name:"DarkSlateGray", rgb:"rgba(47,79,79,100)"},
 {name:"Black", rgb:"rgba(0,0,0,100)"}
+],
+
+Undefined: [
+    {name:"Not Defined"}
 ]
+
+  
+
 };

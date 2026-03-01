@@ -3,6 +3,7 @@ const i_green = document.getElementById("green");
 const i_blue = document.getElementById("blue");
 const i_opacity = document.getElementById("Opacity");
 const hex = document.getElementById("spanCode");
+const hove = document.getElementsByName("inputs");
 
 const s_red = document.getElementById("redVal");
 const s_green = document.getElementById("greenVal");
@@ -28,6 +29,7 @@ let boxColor = { r: 0, g: 0, b: 0, o: 100 };
 let textColor = { r: 255, g: 255, b: 255, o: 100 };
 
 let currentMode = "box";
+
 
 // Apply color to div
 function applyColor() {
@@ -93,9 +95,6 @@ i_green.addEventListener("input", applyColor);
 i_blue.addEventListener("input", applyColor);
 i_opacity.addEventListener("input", applyColor);
 
-// // Initial load
-applyColor();
-
 function hexColor(r, g, b) {
     const a = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'];
     let i = r % 16;
@@ -160,6 +159,7 @@ function updatevalue(r, g, b, o) {
 }
 function checkColorName(r, g, b, o) {
     const rgbVal = `rgba(${r},${g},${b},${o})`;
+    let a = 1;
     for (let group in colors) {
         const found = colors[group].find(col => col.rgb === rgbVal);
         if (found) {
@@ -170,8 +170,16 @@ function checkColorName(r, g, b, o) {
             });
             clChild.value = found.rgb;
             clChild.name = found.name;
-
+            break;
         }
+        if (a == 11) {
+            clParent.value = group;
+            clChild.innerHTML = "";
+            const element = colors[group][0];
+            clChild.add(new Option(element.name, ""));
+            break;
+        }
+        a++;
     }
 }
 
@@ -184,3 +192,6 @@ clParent.addEventListener("change", function () {
         clChild.add(new Option(element.name, element.rgb));
     });
 });
+
+// // Initial load
+applyColor();

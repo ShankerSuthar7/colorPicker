@@ -30,7 +30,6 @@ let textColor = { r: 255, g: 255, b: 255, o: 100 };
 
 let currentMode = "box";
 
-
 // Apply color to div
 function applyColor() {
     const r = parseInt(i_red.value);
@@ -127,20 +126,10 @@ clChild.onchange = () => {
     const rgbc = clChild.value;
     if (currentMode === "box") {
         const [r, g, b, o] = rgbc.match(/\d+/g);
-        updateText(r, g, b, o);
-        updatevalue(r, g, b, o);
-        hexColor(r, g, b);
-        boxColor = { r, g, b, o };
-        applyColor();
-
+        UpdateBoxColor(r, g, b, o);
     } else if (currentMode === "text") {
-        BOX.style.color = clChild.value;
         const [r, g, b, o] = rgbc.match(/\d+/g);
-        updateText(r, g, b, o);
-        updatevalue(r, g, b, o);
-        hexColor(r, g, b);
-        textColor = { r, g, b, o };
-        applyColor();
+        UpdateTextColor(r, g, b, o);
     } else {
         BOX.style.color = clSelect.value;
     }
@@ -191,7 +180,32 @@ clParent.addEventListener("change", function () {
     colors[this.value].forEach(element => {
         clChild.add(new Option(element.name, element.rgb));
     });
+    const first = clChild.options[0].value;
+    if (currentMode === "box") {
+        const [r, g, b, o] = first.match(/\d+/g);
+        UpdateBoxColor(r, g, b, o);
+    } else if (currentMode === "text") {
+        const [r, g, b, o] = first.match(/\d+/g);
+        UpdateTextColor(r, g, b, o);
+    } else {
+        BOX.style.color = clSelect.value;
+    }
 });
+
+function UpdateBoxColor(r, g, b, o) {
+    updateText(r, g, b, o);
+    updatevalue(r, g, b, o);
+    hexColor(r, g, b);
+    boxColor = { r, g, b, o };
+    applyColor();
+}
+function UpdateTextColor(r, g, b, o) {
+    updateText(r, g, b, o);
+    updatevalue(r, g, b, o);
+    hexColor(r, g, b);
+    textColor = { r, g, b, o };
+    applyColor();
+}
 
 // // Initial load
 applyColor();

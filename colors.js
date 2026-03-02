@@ -173,9 +173,10 @@ Grays: [
 ],
 
 Undefined: [
-    {name:"Not Defined"}
+    {name:"Not Defined",rgb:"rgba(0,0,0,0)"}
 ]
 
   
 
 };
+
